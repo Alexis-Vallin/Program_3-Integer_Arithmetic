@@ -1,0 +1,87 @@
+void run_() {
+
+
+	bool run_ = true;
+
+	char runAgain;
+
+	while (run_) {
+
+
+		cout << "Enter a __ ";
+
+		int __Input;
+
+
+		if (!(cin >> __Input)) {
+
+			cout << endl;
+
+			cin.clear();
+
+			cin.ignore(100, '\n');
+
+			cout << "\n\n" << "Invalid entry. Please try again.";
+
+			cout << endl << endl << endl;
+
+			continue;
+
+		}
+
+
+		cout << endl;
+
+
+		cout << "Enter a word size (in bits): ";
+
+		int wordSize;
+
+
+		cin >> wordSize;
+
+
+		cout << endl;
+
+
+
+		int __Result;
+
+
+
+
+
+		/**** ___ Algorithm ****/
+
+
+		/**** End of Algorithm ****/
+
+
+		cout << "Here is your resulting Two's Complement number after Negation: " << negationResult << endl;
+
+
+		cout << endl;
+		cout << endl;
+
+
+
+
+
+		cout << "Would you like to enter another number? (Y/N): ";
+
+		cin >> runAgain;
+
+		cout << endl;
+		cout << endl;
+
+		if (toupper(runAgain) == 'Y') {
+			runNegation = true;
+		}
+
+		else if (toupper(runAgain) == 'N') {
+			runNegation = false;
+
+		}
+
+	}
+}
