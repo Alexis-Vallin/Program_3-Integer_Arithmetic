@@ -253,25 +253,9 @@ void twoComplementAddition() {
 		int additionResult = 0;
 
 
+		if ( !(decimalInput1 >= TMin && decimalInput1 <= TMax) && !(decimalInput2 >= TMin && decimalInput2 <= TMax)) {
 
-		// Seeing if both decimal inputs are in the range of TMin and TMax (the range of a two's complement number)
-
-		bool inTwoComplementRange;
-
-		if ((decimalInput1 >= TMin && decimalInput1 <= TMax) && (decimalInput2 >= TMin && decimalInput2 <= TMax)) {
-
-			inTwoComplementRange = true;
-
-		}
-
-		// Throwing error message if both decimal inputs are not in the range
-
-
-		else {
-
-			inTwoComplementRange = false;
-
-			cout << "Sorry, the number you entered is not within the range of a Two's Complement number.  Please try again." << endl;
+			cout << "One or both of the numbers you entered are not within the range of a Two's Complement number. Please try again." << endl;
 
 			cout << endl;
 			cout << endl;
@@ -282,34 +266,31 @@ void twoComplementAddition() {
 		}
 
 
-		if (inTwoComplementRange) {
 
-			additionResult = decimalInput1 + decimalInput2; // Adding both numbers, then checking to see if it is normal, has positive overflow, or negative overflow
+		additionResult = decimalInput1 + decimalInput2; // Adding both numbers, then checking to see if it is normal, has positive overflow, or negative overflow
 
-			
+		
 
+		// Checking for Negative Overflow
 
-			// Checking for Negative Overflow
+		if (additionResult < TMin) {
 
-			if (additionResult < TMin) {
+			additionResult += pow(2, wordSize); // Adding 2^W to the result if Negative Overflow occurs (to get back into the correct range)
 
-				additionResult += pow(2, wordSize); // Adding 2^W to the result if Negative Overflow occurs (to get back into the correct range)
-
-			}
+		}
 
 
 
 
-			// Checking for Positive Overflow
+		// Checking for Positive Overflow
 
-			else if (additionResult >= pow(2, wordSize - 1)) {
+		else if (additionResult >= pow(2, wordSize - 1)) {
 
-				additionResult -= pow(2, wordSize); // Subtracting 2^W to the result if Positive Overflow occurs (to get back into the correct range)
+			additionResult -= pow(2, wordSize); // Subtracting 2^W to the result if Positive Overflow occurs (to get back into the correct range)
 
 
-			}
+		}
 
-	}
 
 
 		/**** End of Algorithm ****/
@@ -350,13 +331,11 @@ void twoComplementAddition() {
 
 void twoComplementNegation() {
 
-
 	bool runNegation = true;
 
 	char runAgain;
 
 	while (runNegation) {
-
 
 		cout << "Enter a Decimal Number to Negate: ";
 
@@ -407,7 +386,7 @@ void twoComplementNegation() {
 		// Storage for negation result that will be printed 
 
 
-		int negationResult;
+		int negationResult = 0;
 
 
 
