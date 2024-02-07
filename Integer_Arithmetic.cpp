@@ -87,12 +87,10 @@ int main() {
 
         }
 
-        /**** BEGINNING of Two's Complement Addition ****/
+        /**** If Two's Complement Addition is Selected ****/
 
 
         if (userInput == 1) {
-
-
 
 			cout << endl;
 			cout << "_______________";
@@ -105,16 +103,31 @@ int main() {
 			cout << endl;
 			cout << endl;
 
-
 			twoComplementAddition();
-
-
 
         }
 
 
 
-        /**** END of Two's Complement Addition ****/
+		/**** If Two's Complement Negation is Selected ****/
+
+
+        if (userInput == 2) {
+
+			cout << endl;
+			cout << "_______________";
+
+			cout << endl;
+			cout << endl;
+
+			cout << "You have selected Two's Complement Negation.";
+
+			cout << endl;
+			cout << endl;
+
+			twoComplementNegation();
+
+        }
 
 
 
@@ -132,12 +145,6 @@ int main() {
             cout << endl;
 
         }
-
-
-
-
-
-
 
 
     } // End of while loop -> while(currentlyRunning)
@@ -253,6 +260,8 @@ void twoComplementAddition() {
 		int additionResult = 0;
 
 
+		// Seeing if both decimal inputs are in the range of TMin and TMax (the range of a two's complement number)
+
 		if ( !(decimalInput1 >= TMin && decimalInput1 <= TMax) && !(decimalInput2 >= TMin && decimalInput2 <= TMax)) {
 
 			cout << "One or both of the numbers you entered are not within the range of a Two's Complement number. Please try again." << endl;
@@ -319,6 +328,8 @@ void twoComplementAddition() {
 
 		else if (toupper(runAgain) == 'N') {
 			runAddition = false;
+
+			system("cls");
 		}
 
 
@@ -339,10 +350,10 @@ void twoComplementNegation() {
 
 		cout << "Enter a Decimal Number to Negate: ";
 
-		int decimalInput;
+		int negationInput;
 
 
-		if (!(cin >> decimalInput)) {
+		if (!(cin >> negationInput)) {
 
 			cout << endl;
 
@@ -396,13 +407,44 @@ void twoComplementNegation() {
 
 
 
+		// Seeing if decimal input is in the range of TMin and TMax (the range of a two's complement number)
+
+		if ( !(negationInput >= TMin && negationInput <= TMax) ) {
+
+			cout << "Your input is not within the range of a Two's Complement number. Please try again." << endl;
+
+			cout << endl;
+			cout << endl;
+			cout << endl;
+
+			continue;
+
+		}
+
+		
+		// If the user's input is the same value as TMin, then their result is TMin
+
+		if (negationInput == TMin) {
+
+			negationResult = TMin;
+
+		}
+
+		// If the user's input is greater than TMin, then their result is their input multiplied by -1 to negate it
+
+		else if (negationInput > TMin) {
+
+			negationResult = negationInput * (-1);
+
+		}
+
 
 
 
 		/**** End of Algorithm ****/
 
 
-		cout << "Here is your resulting Two's Complement number after Negation: " /* << negationResult << endl */ ;
+		cout << "Here is your resulting Two's Complement number after Negation: " << negationResult << endl;
 
 
 		cout << endl;
@@ -425,6 +467,8 @@ void twoComplementNegation() {
 
 		else if (toupper(runAgain) == 'N') {
 			runNegation = false;
+
+			system("cls");
 
 		}
 
